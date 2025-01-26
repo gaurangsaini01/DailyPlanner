@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* *{ */
+  /* overflow: hidden; */
+  /* margin: 0;padding: 0; */
+  /* border: 1px solid black; */
+/* } */
+.inputClass{
+  border: 1px solid black ;
+  width: 85%;
+  padding: 8px;
+  outline: none;
+  color: #3751FE;
+  font-weight: light;
+}
