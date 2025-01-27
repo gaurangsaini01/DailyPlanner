@@ -16,7 +16,7 @@ function Navbar() {
         navigate('/');
     }
     return (
-        <div className='flex items-center bg-white dark:bg-amber-200 justify-between lg:px-6 lg:py-4 px-2 py-2'>
+        <div className='flex items-center bg-whitedark-bg-[#25262b] dark:text-[#f9f9f9] justify-between lg:px-6 lg:py-4 px-2 py-2'>
             <div className='lg:text-xl text-md font-semibold'>Welcome back, <span className='capitalize'>{user?.username}</span> 👋</div>
             <div className='flex items-center gap-6'>
                 <div className='lg:flex hidden items-center  text-xl gap-6'>

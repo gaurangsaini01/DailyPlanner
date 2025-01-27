@@ -7,7 +7,7 @@ function Dashboard() {
     return (
         <div className='flex flex-row w-full overflow-hidden'>
             <div className='fixed'><Sidebar open={open} setOpen={setOpen} /></div>
-            <div className={`w-full ${open ? 'ml-[400px]' : "ml-[100px]"}`}><Main /></div>
+            <div className={`w-full ${open ? 'lg:ml-[390px]' : "lg:ml-[90px] ml-[80px]"}`}><Main /></div>
         </div>
     )
 }

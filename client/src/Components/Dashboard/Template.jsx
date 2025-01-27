@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../services/operations/todos';
 import { toast } from 'react-toastify';
 import { setUser } from '../../redux/slices/authSlice';
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 const style = {
     position: 'absolute',
@@ -79,12 +80,14 @@ function Template({ type, tasks, setTasks }) {
     }
 
     return (
-        <div className='lg:w-6/12 w-full p-4  lg:m-4 h-fit lg:min-h-[80vh] rounded-md border-2 border-[#1C1D2214] flex flex-col border-dashed'>
+        <div className='lg:w-6/12 dark:bg-[#25262b] w-full p-4  lg:m-4 h-fit lg:min-h-[80vh] rounded-md border-2 border-[#1C1D2214] flex flex-col border-dashed'>
             <div className='flex justify-between'>
-                <div className='text-sm font-medium text-[#1C1D2280]'>{type === "todo" ? 'To do' : type === "progress" ? 'In progress' : 'Done'}({tasks?.length})</div>
+                <div className='text-sm font-medium text-[#1C1D2280] dark:text-[#FFFFFF80]'>{type === "todo" ? 'To do' : type === "progress" ? 'In progress' : 'Done'} ({tasks?.length})</div>
                 <div className='flex items-center gap-2 font-semibold opacity-80'>
-                    <img src={add} alt="" />
-                    <div onClick={() => setOpen(true)} className='text-sm hover:underline cursor-pointer'>Add new task</div>
+                    {/* <img  src={add} alt="" /> */}
+                    <IoIosAddCircleOutline onClick={() => setOpen(true)} className='dark:text-[#f8f9fc] cursor-pointer'/>
+                    
+                    <div onClick={() => setOpen(true)} className='text-sm dark:text-[#f8f9fc] hover:underline cursor-pointer'>Add new task</div>
                     <Modal
                         open={open}
                         onClose={() => setOpen(false)}
