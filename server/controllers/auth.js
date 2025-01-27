@@ -16,6 +16,22 @@ async function signup(req, res) {
       });
     }
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email format",
+      });
+    }
+
+    const passwordRegex1 = /^.{6,}$/
+    if(!passwordRegex1.test(password)){
+      return res.status(400).json({
+        success:false,
+        message:'Password must be 6 char long'
+      })
+    }
+
     //dono password ko match kerlo
     if (password !== confirmPassword) {
       return res.status(400).json({
@@ -64,6 +80,14 @@ async function login(req, res) {
       return res.status(400).json({
         success: false,
         message: "Missing Fields",
+      });
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email format",
       });
     }
 

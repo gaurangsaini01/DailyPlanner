@@ -73,7 +73,6 @@ async function deleteTodo(id, token) {
 
 async function editTodo(id, data, token) {
   try {
-    console.log(id)
     const res = await axios.put(
       UPDATE_TODO_API,
       {
@@ -87,7 +86,7 @@ async function editTodo(id, data, token) {
       }
     );
     if (!res.data.success) {
-      throw new Error("Error deleting Todo");
+      throw new Error("Error updating Todo");
     }
     return res.data.data;
   } catch (err) {

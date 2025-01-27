@@ -2,7 +2,7 @@ import React from "react";
 import { board, add } from '../../assets'
 function Filter() {
     return (
-        <div className="flex justify-between">
+        <div className="hidden lg:flex justify-between lg:visible ">
 
             <div className="flex">
                 <div className="flex gap-2 items-center font-medium pl-4 py-2">

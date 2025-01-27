@@ -38,7 +38,8 @@ function Template({ type, tasks, setTasks }) {
     }
 
     function validateTask(task) {
-        if (task.name === "" || task.description == "" || task.progress == "") {
+        console.log(task);
+        if (task?.name?.trim() == "" || task?.description?.trim() == "" || task.progress == "") {
             toast.error("Empty Fields", {
                 position: "top-center",
                 autoClose: 2000,
@@ -78,7 +79,7 @@ function Template({ type, tasks, setTasks }) {
     }
 
     return (
-        <div className='w-6/12 p-4  m-4 min-h-[75vh] rounded-md border-2 border-[#1C1D2214] flex flex-col border-dashed'>
+        <div className='lg:w-6/12 w-full p-4  lg:m-4 h-fit lg:min-h-[80vh] rounded-md border-2 border-[#1C1D2214] flex flex-col border-dashed'>
             <div className='flex justify-between'>
                 <div className='text-sm font-medium text-[#1C1D2280]'>{type === "todo" ? 'To do' : type === "progress" ? 'In progress' : 'Done'}({tasks?.length})</div>
                 <div className='flex items-center gap-2 font-semibold opacity-80'>
@@ -110,7 +111,7 @@ function Template({ type, tasks, setTasks }) {
                     </Modal>
                 </div>
             </div>
-            <div className='flex flex-col gap-4 mt-4'>
+            <div className='flex flex-col gap-4 lg:mt-4 mt-2'>
                 {tasks?.map((task, index) => {
                     return <TodoCard validateTask={validateTask} key={index} setTask={setTask} setTasks={setTasks} task={task} />
                 })}

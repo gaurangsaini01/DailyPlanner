@@ -40,10 +40,13 @@ function TodoCard({ task, setTask, setTasks, validateTask }) {
     async function handleUpdate(e) {
         try {
             e.preventDefault();
-
             if (validateTask(editTodo)) {
+                let id = toast.loading('Updating Todo', {
+                    position: 'top-center',
+                    theme: "dark",
+                    autoClose: 2000
+                })
                 const res = await editTODO(task._id, editTodo, token);
-                console.log(res);
                 setTasks(prev => {
                     return prev.map((todo) => {
                         if (todo._id === res._id) {
@@ -56,6 +59,12 @@ function TodoCard({ task, setTask, setTasks, validateTask }) {
                 })
                 setMenuOpen(false);
                 setOpen(false);
+                toast.dismiss(id);
+                toast.success('Updated', {
+                    position: 'top-center',
+                    theme: "dark",
+                    autoClose: 1000
+                })
             }
         } catch (error) {
             toast.error('Error updating todo')
@@ -69,11 +78,11 @@ function TodoCard({ task, setTask, setTasks, validateTask }) {
     }
 
     return (
-        <div className='h-[170px] min-w-[300px] rounded-xl flex flex-col border-2 border-[#1C1D2214]'>
+        <div className='h-[170px] w-full xl:min-w-[300px] rounded-xl flex flex-col border-2 border-[#1C1D2214]'>
             <div className='flex justify-between px-4 items-center'>
-                <div className='py-2'>
-                    <p className='font-semibold'>{task.name}</p>
-                    <p className='text-sm font-medium text-[#1c1d22ae]'>{task.description}...</p>
+                <div className='py-2 lg:text-base text-sm'>
+                    <p className='capitalize font-semibold'>{task.name}</p>
+                    <p className='text-sm font-medium text-[#1c1d22ae] capitalize'>{task.description}</p>
                 </div>
                 <div className='border-1 cursor-pointer relative border-gray-500 rounded-full text-sm text-gray-500 p-[4px]'>
                     <SlOptions onClick={() => setMenuOpen(prev => !prev)} />
@@ -115,7 +124,7 @@ function TodoCard({ task, setTask, setTasks, validateTask }) {
                 <Line percent={task.progress * 10} strokeColor={task.progress > 6 ? "#78D700" : "#FFA048"} trailColor='#1C1D2214' strokeWidth={1} />
             </div>
             <div className='pb-4 pr-4 flex items-center justify-between'>
-                <span className='rounded-full text-[#888DA7] bg-[#888DA71A] px-3 ml-2'></span>
+                <span className='rounded-full text-[#888DA7] bg-[#888DA71A] px-3 ml-2'>{task.date.substring(0, 10)}</span>
                 <div className='flex items-center gap-2'>
                     <div className='flex items-center gap-1 text-[#888DA7]'><BsChatRightDots /><p>7</p></div>
                     <div className='flex items-center gap-1 text-[#888DA7]'><GrAttachment /><p>2</p></div>

@@ -15,14 +15,13 @@ function Main() {
     const [doneTasks, setDoneTasks] = useState([]);
     useEffect(() => {
         async function getData() {
-           let id =  toast.loading('Loading Todos..',{
-            position:"top-center"
-           })
+
             const data = await getTasksData(token);
+            console.log(data)
             setTodoTasks(data.filter((task) => task.category == "todo"))
-            setPendingTasks(data.filter((task) => task.category == "pending"))
+            setPendingTasks(data.filter((task) => task.category == "progress"))
             setDoneTasks(data.filter((task) => task.category == "done"))
-            toast.dismiss(id);
+
         }
         getData();
     }, [])
@@ -31,7 +30,7 @@ function Main() {
             <Navbar />
             <Filter />
             <div className='w-[95%] mx-auto h-[2px] bg-gray-100 my-2'></div>
-            <div className='w-full flex '>
+            <div className='w-full p-0 flex lg:flex-row flex-col flex-wrap md:flex-nowrap'>
                 <Template type={"todo"} tasks={todoTasks} setTasks={setTodoTasks} />
                 <Template type={"progress"} tasks={pendingTasks} setTasks={setPendingTasks} />
                 <Template type={"done"} tasks={doneTasks} setTasks={setDoneTasks} />

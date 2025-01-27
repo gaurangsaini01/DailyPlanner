@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { Logo, Ovals, calender, chart, dashboard, filter, map, profile, upload, exit } from '../../assets/index.js'
-function Sidebar() {
-    const [open, setOpen] = useState(false);
+function Sidebar({ open, setOpen }) {
     function openSidebar() {
         setOpen((prev) => !prev)
     }
     return (
-        <div className='h-screen bg-black flex flex-row'>
+        <div className='min-h-screen bg-black flex flex-row'>
             <div className='flex flex-col justify-between items-center'>
-                <div className='flex gap-10 w-[90px] flex-col items-center pt-8'>
+                <div className='flex gap-10 lg:w-[90px] w-[70px] flex-col items-center pt-8'>
                     <img src={Ovals} className='20px' alt="" />
                     <img src={Logo} onClick={openSidebar} className='cursor-pointer' alt="" />
                     <img src={dashboard} alt="" />
